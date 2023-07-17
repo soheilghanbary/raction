@@ -1,9 +1,5 @@
 import TEditor from "@/components/editor"
 
 export default function CreatePage() {
-  return (
-    <div>
-      <TEditor />
-    </div>
-  )
+  return <div className="max-w-xl"></div>
 }

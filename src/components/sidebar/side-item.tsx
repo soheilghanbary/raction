@@ -16,7 +16,7 @@ const SidebarItem = ({ title, icon, href }: SidebarItemProps) => {
     <Link
       href={href}
       className={cn(
-        "flex cursor-pointer items-center rounded-md border border-transparent px-2 py-1.5 font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+        "flex cursor-pointer items-center rounded-md border border-transparent px-2 py-1.5 font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
         pathname === href ? "bg-muted text-foreground" : ""
       )}
     >

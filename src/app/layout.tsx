@@ -3,10 +3,10 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import { inter, poppins } from "@/lib/fonts"
+import { inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import AuthProvider from "@/components/auth-provider"
 import SiteLayout from "@/components/layouts/site-layout"
-import Sidebar from "@/components/sidebar"
 
 export const metadata: Metadata = {
   title: {
@@ -31,21 +31,18 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.className
-        )}
-      >
-        <SiteLayout>
-          <div className="flex gap-8 pt-2">
-            <Sidebar />
-            <div className="flex-1">{children}</div>
-          </div>
-        </SiteLayout>
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            inter.className
+          )}
+        >
+          <SiteLayout>{children}</SiteLayout>
+        </body>
+      </html>
+    </AuthProvider>
   )
 }

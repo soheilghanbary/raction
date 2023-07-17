@@ -1,11 +1,12 @@
-import { CakeIcon, CalendarDays, HashIcon, Link2, MapPin } from "lucide-react"
+import { getAllUserPosts } from "@/actions/post"
+import { CalendarDays, Link2, MapPin } from "lucide-react"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TweetCard from "@/components/tweet/tweet-card"
 
-interface Props {}
-
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const posts = await getAllUserPosts()
+  console.log("posts: ", posts)
   return (
     <div className="max-w-xl">
       <div className="flex items-center gap-10">
@@ -49,8 +50,9 @@ export default function ProfilePage() {
           <TabsTrigger value="Bookmarks">Bookmarks</TabsTrigger>
         </TabsList>
         <TabsContent value="Tweets" className="space-y-4">
-          <TweetCard />
-          <TweetCard />
+          {posts.map((post) => (
+            <TweetCard key={post.id} {...post} />
+          ))}
         </TabsContent>
         <TabsContent value="Likes">likes tabs.</TabsContent>
         <TabsContent value="Replise">replise tabs.</TabsContent>

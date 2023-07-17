@@ -1,51 +1,123 @@
 "use client"
 
-import { useState } from "react"
-import data from "@emoji-mart/data"
-import Picker from "@emoji-mart/react"
+import { useCallback, useTransition } from "react"
+import { createTweet } from "@/actions/post"
+import Image from "@tiptap/extension-image"
+import Link from "@tiptap/extension-link"
+import Placeholder from "@tiptap/extension-placeholder"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
-import { SmileIcon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { BoldIcon, ImageIcon, ItalicIcon, LinkIcon } from "lucide-react"
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Button } from "@/components/ui/button"
 
-import { Button } from "./ui/button"
-
-const TEditor = () => {
-  const [showEmoji, setShowEmoji] = useState(false)
+const TEditor = ({ onClose }: { onClose: () => void }) => {
   const editor = useEditor({
-    extensions: [StarterKit],
-    content: "<p>Hello World! 🌎️</p>",
+    extensions: [
+      StarterKit,
+      Image.configure({
+        HTMLAttributes: {
+          class: "rounded-2xl my-3",
+        },
+      }),
+      Placeholder.configure({
+        placeholder: "what is happening?!",
+      }),
+      Link.configure({
+        openOnClick: true,
+        HTMLAttributes: {
+          rel: "noopener noreferrer",
+          class: "underline",
+          target: "_blank",
+        },
+      }),
+    ],
+    autofocus: true,
+    content: "",
   })
 
-  const { theme } = useTheme()
+  const [isPending, startTransition] = useTransition()
 
-  const handleSelectEmoji = (emoji: { native: string }) => {
-    editor?.chain().focus().insertContent(emoji.native).run()
+  const addImage = useCallback(() => {
+    const url = window.prompt("URL")
+
+    if (url) {
+      editor?.chain().focus().setImage({ src: url }).run()
+    }
+  }, [editor])
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor?.getAttributes("link").href
+    const url = window.prompt("URL", previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }
+
+    // empty
+    if (url === "") {
+      editor?.chain().focus().extendMarkRange("link").unsetLink().run()
+
+      return
+    }
+
+    // update link
+    editor?.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
+  }, [editor])
+
+  const onCreate = () => {
+    startTransition(async () => {
+      await createTweet(editor?.getHTML() as string)
+      onClose()
+    })
+  }
+
+  if (!editor) {
+    return null
   }
 
   return (
-    <div>
-      <EditorContent editor={editor} />
-      <hr className="my-4" />
-      <Button
-        onClick={() => setShowEmoji(!showEmoji)}
-        size={"icon"}
-        variant={"outline"}
-      >
-        <SmileIcon className="h-5 w-5" />
-      </Button>
-      <Popover open={showEmoji}>
-        <PopoverContent className="border-0 bg-transparent shadow-none">
-          <Picker data={data} onEmojiSelect={handleSelectEmoji} theme={theme} />
-        </PopoverContent>
-      </Popover>
-    </div>
+    <>
+      <EditorContent className="min-h-[160px]" editor={editor} />
+      <hr className="my-2.5" />
+      <div className="flex items-center justify-between">
+        <div className="space-x-2">
+          <Button onClick={addImage} size={"icon"} variant={"ghost"}>
+            <ImageIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            size={"icon"}
+            variant={editor.isActive("bold") ? "secondary" : "ghost"}
+          >
+            <BoldIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            size={"icon"}
+            variant={editor.isActive("italic") ? "secondary" : "ghost"}
+          >
+            <ItalicIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            onClick={setLink}
+            size={"icon"}
+            variant={editor.isActive("link") ? "secondary" : "ghost"}
+          >
+            <LinkIcon className="h-4 w-4" />
+          </Button>
+        </div>
+        <Button
+          disabled={isPending}
+          variant={"default"}
+          size={"sm"}
+          onClick={onCreate}
+        >
+          {isPending ? "Tweeting" : "Tweet"}
+        </Button>
+      </div>
+    </>
   )
 }
 
