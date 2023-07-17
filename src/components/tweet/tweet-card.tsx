@@ -84,12 +84,12 @@ export default function TweetCard({
         <li className="flex items-center text-pink-500" onClick={onLikeTweet}>
           <HeartIcon className="mr-2 h-5 w-5" /> {likes.length}
         </li>
-        <li
+        {/* <li
           className="flex items-center text-pink-500"
           onClick={onDisLikeTweet}
         >
           <HeartIcon className="mr-2 h-5 w-5" /> dislike
-        </li>
+        </li> */}
         <li className="flex items-center text-sky-500">
           <BookmarkIcon className="mr-2 h-5 w-5" /> 340
         </li>
