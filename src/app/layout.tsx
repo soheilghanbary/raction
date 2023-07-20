@@ -3,8 +3,6 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import { inter } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import AuthProvider from "@/components/auth-provider"
 import SiteLayout from "@/components/layouts/site-layout"
 
@@ -34,12 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <AuthProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            inter.className
-          )}
-        >
+        <body className={"min-h-screen bg-background antialiased"}>
           <SiteLayout>{children}</SiteLayout>
         </body>
       </html>

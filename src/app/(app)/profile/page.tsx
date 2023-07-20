@@ -1,24 +1,24 @@
-import { getAllUserPosts } from "@/actions/post"
+import { getUser } from "@/actions/post"
 import { CalendarDays, Link2, MapPin } from "lucide-react"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import TweetCard from "@/components/tweet/tweet-card"
+import UserLikes from "@/components/tweet/user-likes"
+import UserTweetList from "@/components/tweet/user-tweet-list"
+
+import EditProfile from "./edit-profile"
 
 export default async function ProfilePage() {
-  const posts = await getAllUserPosts()
-  console.log("posts: ", posts)
+  const user = await getUser()
   return (
-    <div className="max-w-xl">
+    <div>
       <div className="flex items-center gap-10">
-        <img
-          src="https://pbs.twimg.com/profile_images/1667147459846447105/1PrTm4P2_400x400.jpg"
-          className="h-28 w-28 rounded-full"
-        />
+        <img src={user?.image} className="h-28 w-28 rounded-full" />
         <div>
-          <h2 className="text-lg font-medium">Soheil Ghanbary</h2>
-          <p className="text-sm text-muted-foreground">@soli_ghanbary</p>
+          <h2 className="text-lg font-medium">{user?.name}</h2>
+          <p className="text-sm text-muted-foreground">{user?.email}</p>
         </div>
       </div>
+      <EditProfile />
       <p className="my-2">Full Stack Web Developer from IRAN</p>
       <ul className="flex space-x-4 text-sm text-muted-foreground">
         <li className="flex items-center">
@@ -50,11 +50,11 @@ export default async function ProfilePage() {
           <TabsTrigger value="Bookmarks">Bookmarks</TabsTrigger>
         </TabsList>
         <TabsContent value="Tweets" className="space-y-4">
-          {posts.map((post) => (
-            <TweetCard key={post.id} {...post} />
-          ))}
+          <UserTweetList />
         </TabsContent>
-        <TabsContent value="Likes">likes tabs.</TabsContent>
+        <TabsContent value="Likes">
+          <UserLikes />
+        </TabsContent>
         <TabsContent value="Replise">replise tabs.</TabsContent>
         <TabsContent value="Saved">saved tabs.</TabsContent>
         <TabsContent value="Bookmarks">bookmarks tabs.</TabsContent>

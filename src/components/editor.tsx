@@ -4,6 +4,7 @@ import { useCallback, useTransition } from "react"
 import { createTweet } from "@/actions/post"
 import Image from "@tiptap/extension-image"
 import Link from "@tiptap/extension-link"
+import Mention from "@tiptap/extension-mention"
 import Placeholder from "@tiptap/extension-placeholder"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
@@ -29,6 +30,11 @@ const TEditor = ({ onClose }: { onClose: () => void }) => {
           rel: "noopener noreferrer",
           class: "underline",
           target: "_blank",
+        },
+      }),
+      Mention.configure({
+        HTMLAttributes: {
+          class: "font-semibold text-indigo-500",
         },
       }),
     ],

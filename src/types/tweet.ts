@@ -1,5 +1,5 @@
 export interface TweetCardProps {
-  id: number
+  id: string
   userId: string
   body: string
   published: Date
@@ -10,6 +10,7 @@ export interface TweetCardProps {
   }
   likes: []
   comments: []
+  views: number
 }
 
 export interface TweetListProps {

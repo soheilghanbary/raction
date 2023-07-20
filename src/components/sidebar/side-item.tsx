@@ -1,29 +1,29 @@
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
+import { SidebarItemProps } from "@/types/sidebar"
 import { cn } from "@/lib/utils"
 
-interface SidebarItemProps {
-  title: string
-  href: string
-  icon: any
-}
-
 const SidebarItem = ({ title, icon, href }: SidebarItemProps) => {
-  const Icon = icon
-  const pathname = usePathname()
   return (
     <Link
       href={href}
       className={cn(
-        "flex cursor-pointer items-center rounded-md border border-transparent px-2 py-1.5 font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
-        pathname === href ? "bg-muted text-foreground" : ""
+        "flex cursor-pointer items-center rounded-md border border-transparent p-2 text-foreground/90 transition-colors hover:bg-muted hover:text-foreground"
       )}
     >
-      <Icon className="mr-4 h-5 w-5" />
-      {title}
+      <SidebarIcon icon={icon} />
+      <SidebarTitle text={title} />
     </Link>
   )
+}
+
+const SidebarTitle = ({ text }: { text: string }) => (
+  <h2 className="text-xl">{text}</h2>
+)
+
+const SidebarIcon = ({ icon }: { icon: any }) => {
+  const Icon = icon
+  return <Icon className="mr-4 h-6 w-6" />
 }
 
 export default SidebarItem

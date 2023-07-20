@@ -12,9 +12,9 @@ export default function CreateTweet() {
   return (
     <>
       <Button
-        variant={"default"}
-        size="lg"
-        className="mt-6 w-full"
+        variant={"colored"}
+        size="xl"
+        className="mt-8 w-full rounded-full"
         onClick={() => setIsOpen(true)}
       >
         Create Tweet

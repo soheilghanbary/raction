@@ -1,9 +1,11 @@
-import CreateTweet from "../tweet/create-tweet"
+import CreateTweet from "./create-tweet"
 import SidebarBody from "./side-body"
+import SidebarHeader from "./side-header"
 
 const Sidebar = () => {
   return (
-    <div className="sticky top-0 min-h-[600px] w-56">
+    <div className="sticky top-4 w-56">
+      <SidebarHeader />
       <SidebarBody />
       <CreateTweet />
     </div>
