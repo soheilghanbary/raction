@@ -3,8 +3,8 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import AuthProvider from "@/components/auth-provider"
 import SiteLayout from "@/components/layouts/site-layout"
+import AuthProvider from "@/components/providers/auth-provider"
 
 export const metadata: Metadata = {
   title: {

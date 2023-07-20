@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-import { ThemeProvider } from "../theme-provider"
+import { ThemeProvider } from "../providers/theme-provider"
 import SiteFooter from "./site-footer"
 
 export default function SiteLayout({ children }: { children: ReactNode }) {

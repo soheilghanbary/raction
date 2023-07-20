@@ -2,8 +2,8 @@
 
 import { HydrateProps, Hydrate as RQHydrate } from "@tanstack/react-query"
 
-function Hydrate(props: HydrateProps) {
+function ReactQueryHydrate(props: HydrateProps) {
   return <RQHydrate {...props} />
 }
 
-export default Hydrate
+export default ReactQueryHydrate

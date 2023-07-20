@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 import ASide from "@/components/aside"
-import QueryProvider from "@/components/query-provider"
+import QueryProvider from "@/components/providers/query-provider"
 import Sidebar from "@/components/sidebar"
 
 export default function AppLayout({ children }: { children: ReactNode }) {
