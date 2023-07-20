@@ -12,7 +12,7 @@ import { BoldIcon, ImageIcon, ItalicIcon, LinkIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-const TEditor = ({ onClose }: { onClose: () => void }) => {
+const TEditor = ({ onClose }: { onClose?: () => void }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -75,7 +75,8 @@ const TEditor = ({ onClose }: { onClose: () => void }) => {
   const onCreate = () => {
     startTransition(async () => {
       await createTweet(editor?.getHTML() as string)
-      onClose()
+      onClose && onClose()
+      editor?.commands.clearContent()
     })
   }
 
@@ -85,7 +86,7 @@ const TEditor = ({ onClose }: { onClose: () => void }) => {
 
   return (
     <>
-      <EditorContent className="min-h-[160px]" editor={editor} />
+      <EditorContent className="min-h-[120px]" editor={editor} />
       <hr className="my-2.5" />
       <div className="flex items-center justify-between">
         <div className="space-x-2">

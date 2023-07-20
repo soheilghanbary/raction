@@ -1,12 +1,9 @@
-import { checkUserLikedPost } from "@/actions/post"
+import TweetList from "./tweet-list"
 
-export default async function TestPage() {
-  const likedByMe = await checkUserLikedPost("clka0ra6q0004tc6cixfpwsr1")
-  const log = `hey this is liked by me: ${likedByMe}`
+export default function TestPage() {
   return (
     <div>
-      <h1>this is my test page</h1>
-      {log}
+      <TweetList />
     </div>
   )
 }

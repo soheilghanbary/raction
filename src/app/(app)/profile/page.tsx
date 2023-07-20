@@ -10,7 +10,7 @@ import EditProfile from "./edit-profile"
 export default async function ProfilePage() {
   const user = await getUser()
   return (
-    <div>
+    <div className="mt-4">
       <div className="flex items-center gap-10">
         <img src={user?.image} className="h-28 w-28 rounded-full" />
         <div>

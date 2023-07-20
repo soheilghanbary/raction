@@ -4,7 +4,7 @@ import UserTweetBody from "./user-tweet-body"
 import UserTweetFooter from "./user-tweet-footer"
 import UserTweetHeader from "./user-tweet-header"
 
-export default async function UserTweet({
+export default function UserTweet({
   id,
   body,
   published,

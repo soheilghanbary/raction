@@ -4,7 +4,7 @@ import OAuthForm from "@/components/oauth-form"
 
 export default function LoginPage() {
   return (
-    <section className="flex h-[70vh] items-center justify-center">
+    <section className="flex h-[90vh] items-center justify-center">
       <div className="w-full max-w-sm space-y-4 text-center">
         <CommandIcon className="mx-auto h-6 w-6" />
         <h1 className="text-center text-2xl font-semibold">

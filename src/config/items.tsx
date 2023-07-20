@@ -4,7 +4,7 @@ import { Icons } from "@/components/icons"
 export const sidebarItems: SidebarItemProps[] = [
   {
     title: "Home",
-    href: "/",
+    href: "/home",
     icon: Icons.home,
   },
   {
