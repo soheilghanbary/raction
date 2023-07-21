@@ -9,14 +9,22 @@ export async function GET(req: Request) {
   const role = searchParams.get("role") as "user" | "all"
   if (role === "all") {
     const posts = await prisma.post.findMany({
-      include: { user: true, likes: true },
+      include: {
+        user: true,
+        likes: true,
+        comments: { include: { user: true } },
+      },
     })
     return res.json(posts.reverse())
   }
   if (role === "user") {
     const posts = await prisma.post.findMany({
       where: { userId },
-      include: { user: true, likes: true },
+      include: {
+        user: true,
+        likes: true,
+        comments: { include: { user: true } },
+      },
     })
     return res.json(posts.reverse())
   }

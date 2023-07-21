@@ -12,6 +12,7 @@ export default function TweetCard({
   views,
   likes,
   published,
+  comments,
 }: TweetCardProps) {
   return (
     <div className="border p-4">
@@ -22,7 +23,12 @@ export default function TweetCard({
         user={user}
       />
       <TweetCardBody body={body} />
-      <TweetCardFooter postId={id} likes={likes} views={views} />
+      <TweetCardFooter
+        comments={comments}
+        postId={id}
+        likes={likes}
+        views={views}
+      />
     </div>
   )
 }

@@ -3,7 +3,6 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import SiteFooter from "@/components/footer"
 import AuthProvider from "@/components/providers/auth-provider"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 
@@ -38,7 +37,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="container mx-auto my-4 min-h-screen flex-1">
               {children}
             </div>
-            <SiteFooter />
           </ThemeProvider>
         </body>
       </html>
