@@ -1,7 +1,6 @@
 "use client"
 
-import { useCallback, useTransition } from "react"
-import { createTweet } from "@/actions/post"
+import { useCallback } from "react"
 import Image from "@tiptap/extension-image"
 import Link from "@tiptap/extension-link"
 import Mention from "@tiptap/extension-mention"
@@ -10,6 +9,7 @@ import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { BoldIcon, ImageIcon, ItalicIcon, LinkIcon } from "lucide-react"
 
+import { useCreateTweet } from "@/hooks/tweets"
 import { Button } from "@/components/ui/button"
 
 const TEditor = ({ onClose }: { onClose?: () => void }) => {
@@ -42,8 +42,6 @@ const TEditor = ({ onClose }: { onClose?: () => void }) => {
     content: "",
   })
 
-  const [isPending, startTransition] = useTransition()
-
   const addImage = useCallback(() => {
     const url = window.prompt("URL")
 
@@ -72,16 +70,16 @@ const TEditor = ({ onClose }: { onClose?: () => void }) => {
     editor?.chain().focus().extendMarkRange("link").setLink({ href: url }).run()
   }, [editor])
 
+  const { mutate, isLoading } = useCreateTweet()
+
   const onCreate = () => {
-    startTransition(async () => {
-      await createTweet(editor?.getHTML() as string)
-      onClose && onClose()
-      editor?.commands.clearContent()
-    })
+    mutate(editor?.getHTML() as string)
+    onClose && onClose()
+    editor?.commands.clearContent()
   }
 
   if (!editor) {
-    return null
+    return <p>ready...</p>
   }
 
   return (
@@ -116,12 +114,12 @@ const TEditor = ({ onClose }: { onClose?: () => void }) => {
           </Button>
         </div>
         <Button
-          disabled={isPending}
+          disabled={isLoading}
           variant={"default"}
           size={"sm"}
           onClick={onCreate}
         >
-          {isPending ? "Tweeting" : "Tweet"}
+          {isLoading ? "Tweeting" : "Tweet"}
         </Button>
       </div>
     </>

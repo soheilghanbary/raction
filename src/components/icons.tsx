@@ -29,6 +29,7 @@ import {
   Filter,
   Footprints,
   HardHat,
+  Heart,
   HomeIcon,
   Image,
   LeafyGreen,
@@ -49,7 +50,6 @@ import {
   Search,
   Send,
   Settings,
-  Settings2,
   Shirt,
   ShoppingBag,
   ShoppingCart,
@@ -136,6 +136,7 @@ export const Icons = {
   saved: BookmarkIcon,
   atom: Atom,
   image: Image,
+  heart: Heart,
   nextjs: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path

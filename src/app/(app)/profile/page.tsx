@@ -2,8 +2,7 @@ import { getUser } from "@/actions/post"
 import { CalendarDays, Link2, MapPin } from "lucide-react"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import UserLikes from "@/components/tweet/user-likes"
-import UserTweetList from "@/components/tweet/user-tweet-list"
+import TweetList from "@/components/tweets/tweet-list"
 
 import EditProfile from "./edit-profile"
 
@@ -12,7 +11,11 @@ export default async function ProfilePage() {
   return (
     <div className="mt-4">
       <div className="flex items-center gap-10">
-        <img src={user?.image} className="h-28 w-28 rounded-full" />
+        <img
+          src={user?.image as string}
+          alt={user?.name as string}
+          className="h-28 w-28 rounded-full"
+        />
         <div>
           <h2 className="text-lg font-medium">{user?.name}</h2>
           <p className="text-sm text-muted-foreground">{user?.email}</p>
@@ -50,11 +53,9 @@ export default async function ProfilePage() {
           <TabsTrigger value="Bookmarks">Bookmarks</TabsTrigger>
         </TabsList>
         <TabsContent value="Tweets" className="space-y-4">
-          <UserTweetList />
+          <TweetList role="user" />
         </TabsContent>
-        <TabsContent value="Likes">
-          <UserLikes />
-        </TabsContent>
+        <TabsContent value="Likes">likes page</TabsContent>
         <TabsContent value="Replise">replise tabs.</TabsContent>
         <TabsContent value="Saved">saved tabs.</TabsContent>
         <TabsContent value="Bookmarks">bookmarks tabs.</TabsContent>

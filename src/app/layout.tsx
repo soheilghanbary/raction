@@ -3,8 +3,9 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
-import SiteLayout from "@/components/layouts/site-layout"
+import SiteFooter from "@/components/footer"
 import AuthProvider from "@/components/providers/auth-provider"
+import { ThemeProvider } from "@/components/providers/theme-provider"
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +34,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en" suppressHydrationWarning>
         <head />
         <body className={"min-h-screen bg-background antialiased"}>
-          <SiteLayout>{children}</SiteLayout>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="container mx-auto my-4 min-h-screen flex-1">
+              {children}
+            </div>
+            <SiteFooter />
+          </ThemeProvider>
         </body>
       </html>
     </AuthProvider>

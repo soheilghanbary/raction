@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache"
 import { getServerSession } from "next-auth"
 
+import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/db"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 // get all tweets
 export async function getAllTweets() {

@@ -3,9 +3,9 @@ import Link from "next/link"
 import { siteConfig, siteFooter } from "@/config/site"
 import { cn } from "@/lib/utils"
 
-import { Icons } from "../icons"
-import { ThemeToggle } from "../theme-toggle"
-import { buttonVariants } from "../ui/button"
+import { Icons } from "./icons"
+import { ThemeToggle } from "./theme-toggle"
+import { buttonVariants } from "./ui/button"
 
 export default function SiteFooter() {
   return (
