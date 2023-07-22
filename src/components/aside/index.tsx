@@ -11,11 +11,11 @@ import {
 
 export default function ASide() {
   return (
-    <div className="sticky top-4 space-y-4">
+    <div className="sticky top-4 space-y-4 md:hidden lg:block">
       <SearchBox />
       <Card className="border-0 bg-secondary">
         <CardHeader>
-          <CardTitle>What's happening</CardTitle>
+          <CardTitle>Whats happening</CardTitle>
         </CardHeader>
         <CardContent>
           <CardTitle className="mb-4">Top Tags</CardTitle>
