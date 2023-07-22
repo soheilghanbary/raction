@@ -34,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body className={"min-h-screen bg-background antialiased"}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="container mx-auto my-4 min-h-screen flex-1">
+            <div className="container mx-auto min-h-screen flex-1">
               {children}
             </div>
           </ThemeProvider>

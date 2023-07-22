@@ -7,14 +7,10 @@ import Sidebar from "@/components/sidebar"
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <QueryProvider>
-      <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-2">
-          <Sidebar />
-        </div>
-        <div className="col-span-5">{children}</div>
-        <div className="col-span-3">
-          <ASide />
-        </div>
+      <div className="flex">
+        <Sidebar />
+        <div className="mr-4 flex-1">{children}</div>
+        <ASide />
       </div>
     </QueryProvider>
   )
