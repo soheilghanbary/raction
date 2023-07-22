@@ -82,6 +82,7 @@
 }
 
 ::-webkit-scrollbar {
+  display: none;
   width: 8px;
 }
 
