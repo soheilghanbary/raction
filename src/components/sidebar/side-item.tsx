@@ -8,7 +8,7 @@ const SidebarItem = ({ title, icon, href }: SidebarItemProps) => {
     <Link
       href={href}
       className={cn(
-        "flex cursor-pointer items-center rounded-md border border-transparent p-2 text-foreground/90 transition-colors hover:bg-muted hover:text-foreground"
+        "flex cursor-pointer items-center rounded-xl border border-transparent p-2 text-foreground/90 transition-colors hover:bg-muted hover:text-foreground"
       )}
     >
       <SidebarIcon icon={icon} />

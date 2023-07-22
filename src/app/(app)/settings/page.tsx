@@ -12,24 +12,18 @@ import SignOutButton from "@/components/sign-out-button"
 export default function SettingsPage() {
   return (
     <>
-      <Card className="my-4">
-        <CardHeader className="mb-4 border-b">
-          <CardTitle>Sign Out Account</CardTitle>
-          <CardDescription>do you want a loggout your account?</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <SignOutButton />
-        </CardContent>
-      </Card>
-      <Card className="my-4">
-        <CardHeader className="mb-4 border-b">
-          <CardTitle>Theme Settings</CardTitle>
-          <CardDescription>choose your favorite theme?</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <SelectTheme />
-        </CardContent>
-      </Card>
+      <div className="p-4">
+        <h1 className="text-lg font-semibold">Sign Out Account</h1>
+        <p className="text-sm text-muted-foreground">
+          do you want a loggout your account?
+        </p>
+      </div>
+      <hr />
+      <SignOutButton />
+      <hr />
+      <div className="p-4">
+        <SelectTheme />
+      </div>
     </>
   )
 }
