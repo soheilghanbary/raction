@@ -4,10 +4,10 @@ import TweetList from "@/components/tweets/tweet-list"
 export default function HomePage() {
   return (
     <>
-      <div className="sticky top-0 z-50 -mt-4 h-16 border bg-background p-4">
+      <div className="sticky top-0 z-50 h-20 border-b bg-black/70 backdrop-blur-lg p-4">
         <h2 className="text-lg font-semibold">Home</h2>
       </div>
-      <div className="border-x p-4">
+      <div className="border-b p-4">
         <TEditor />
       </div>
       <TweetList role={"all"} />

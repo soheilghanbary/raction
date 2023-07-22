@@ -15,7 +15,7 @@ export default function TweetCard({
   comments,
 }: TweetCardProps) {
   return (
-    <div className="border p-4">
+    <div className="border-b p-4 last:border-y-0">
       <TweetCardHeader
         published={published}
         userId={userId}
