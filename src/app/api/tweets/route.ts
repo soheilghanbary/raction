@@ -41,6 +41,7 @@ export async function DELETE(req: Request) {
   const userId = await getUserSession()
   const { searchParams } = new URL(req.url)
   const postId = searchParams.get("id") as string
+  await prisma.comment.deleteMany({ where: { userId, postId } })
   await prisma.like.deleteMany({ where: { userId, postId } })
   await prisma.post.delete({ where: { id: postId } })
   return res.json({ msg: "tweet deleted!" })
