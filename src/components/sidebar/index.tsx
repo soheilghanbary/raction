@@ -4,7 +4,7 @@ import SidebarHeader from "./side-header"
 
 const Sidebar = () => {
   return (
-    <div className="sticky top-0 h-screen w-64 p-4">
+    <div className="sticky top-0 h-screen w-72 p-4">
       <SidebarHeader />
       <SidebarBody />
       <CreateTweet />

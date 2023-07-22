@@ -17,7 +17,7 @@ export default function CreateTweet() {
         className="mt-8 w-full rounded-full"
         onClick={() => setIsOpen(true)}
       >
-        Create Tweet
+        Tweet
       </Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent>
