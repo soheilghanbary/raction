@@ -5,6 +5,7 @@ import Image from "@tiptap/extension-image"
 import Link from "@tiptap/extension-link"
 import Mention from "@tiptap/extension-mention"
 import Placeholder from "@tiptap/extension-placeholder"
+import Youtube from "@tiptap/extension-youtube"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { BoldIcon, ImageIcon, ItalicIcon, LinkIcon } from "lucide-react"
@@ -36,6 +37,13 @@ const TEditor = ({ onClose }: { onClose?: () => void }) => {
         HTMLAttributes: {
           class: "font-semibold text-indigo-500",
         },
+      }),
+      Youtube.configure({
+        inline: false,
+        controls: true,
+        nocookie: true,
+        allowFullscreen: false,
+        width: 580,
       }),
     ],
     autofocus: true,
