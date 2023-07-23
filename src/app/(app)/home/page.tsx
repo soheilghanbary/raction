@@ -5,7 +5,7 @@ import TweetList from "@/components/tweets/tweet-list"
 export default function HomePage() {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader title="Home" />
       <div className="border-b p-4">
         <TEditor />
       </div>

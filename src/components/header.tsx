@@ -5,11 +5,11 @@ import { useSidebar } from "@/hooks/use-sidebar"
 import { Icons } from "./icons"
 import { Button } from "./ui/button"
 
-export default function SiteHeader() {
+export default function SiteHeader({ title }: { title: string }) {
   const { onOpen } = useSidebar()
   return (
     <div>
-      <div className="sticky top-0 z-50 h-20 border-b dark:bg-black/60 bg-white/60 p-4 backdrop-blur flex justify-between items-center">
+      <div className="sticky top-0 z-50 border-b dark:bg-black/60 bg-white/60 p-4 backdrop-blur flex justify-between items-center">
         <Button
           onClick={onOpen}
           variant={"ghost"}
@@ -18,7 +18,7 @@ export default function SiteHeader() {
         >
           <Icons.menu />
         </Button>
-        <h2 className="text-lg font-semibold">Home</h2>
+        <h1 className="text-lg font-semibold">{title}</h1>
         <div></div>
       </div>
     </div>
