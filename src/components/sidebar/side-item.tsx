@@ -2,10 +2,13 @@ import Link from "next/link"
 
 import { SidebarItemProps } from "@/types/sidebar"
 import { cn } from "@/lib/utils"
+import { useSidebar } from "@/hooks/use-sidebar"
 
 const SidebarItem = ({ title, icon, href }: SidebarItemProps) => {
+  const { onClose } = useSidebar()
   return (
     <Link
+      onClick={onClose}
       href={href}
       className={cn(
         "flex cursor-pointer items-center rounded-xl border border-transparent p-2 text-foreground/90 transition-colors hover:bg-muted hover:text-foreground"

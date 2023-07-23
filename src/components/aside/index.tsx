@@ -11,7 +11,7 @@ import {
 
 export default function ASide() {
   return (
-    <div className="sticky top-0 h-screen w-96 space-y-4 pt-4 md:hidden lg:block">
+    <div className="sticky top-0 h-screen w-96 space-y-4 pt-4 hidden lg:block">
       <SearchBox />
       <Card className="border-0 bg-secondary">
         <CardHeader>

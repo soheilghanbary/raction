@@ -9,7 +9,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     <QueryProvider>
       <div className="flex">
         <Sidebar />
-        <div className="mr-4 flex-1 border-x">{children}</div>
+        <div className="flex-1 border-x">{children}</div>
         <ASide />
       </div>
     </QueryProvider>
